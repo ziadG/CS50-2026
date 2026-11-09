@@ -1,11 +1,11 @@
 sort1 uses: Bubble Sort
 
-How do you know?: Shortes time in the best case scenario (Omega) sorted file
+How do you know?: fast on sorted lists, O(n)
 
 sort2 uses: Merge Sort
 
-How do you know?: Shortest time in both best and worst case scenarios
+How do you know?: Fastest O(log n)
 
-sort3 uses: Selection Sort
+sort3 uses: Selection Sort O(n2)
 
-How do you know?: longest time in best case scenario
+How do you know?: Slowest in sorted lists
