@@ -1,6 +1,7 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 // Max number of candidates
 #define MAX 9
@@ -52,6 +53,7 @@ int main(int argc, string argv[])
         string name = get_string("Vote: ");
 
         // Check for invalid vote
+
         if (!vote(name))
         {
             printf("Invalid vote.\n");
@@ -65,51 +67,38 @@ int main(int argc, string argv[])
 // Update vote totals given a new vote
 bool vote(string name)
 {
-    // TODO
-    // looping through the array and increminting the total votes by 1
-    for (int i = 0; i < candidate_count; i++)
+    
+    for (int i = 0; i < candidate_count;i++ )
     {
-        if (strcmp(name, candidates[i].name) == 0)
+        //printf("Name: %s\n",candidates[i].name);
+        if (strcmp(name,candidates[i].name) == 0)
         {
-            candidates[i].votes++;
+            candidates[i].votes ++;
             return true;
-        }
+        }       
     }
     return false;
 }
-
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
-    // TODO
-    string name;
-    string winner;
-    int vote;
-    for (int i = 0; i < candidate_count; i++)
+
+    int index = 0;
+    int winner = 0;
+    for (int i = 0; i < candidate_count; i++ )
     {
-        // bubbule sorting the array
-        if (candidates[i].votes > candidates[i + 1].votes)
+        if (candidates[i].votes > winner)
         {
-            name = candidates[i].name;
-            vote = candidates[i].votes;
-            candidates[i].name = candidates[i + 1].name;
-            candidates[i].votes = candidates[i + 1].votes;
-            candidates[i + 1].name = name;
-            candidates[i + 1].votes = vote;
-            i = -1;
+            winner = candidates[i].votes;
         }
     }
-    // checking for the winner and printing all candidates in case of tie
-    for (int j = 0; j <= candidate_count; j++)
+    for (int j = 0; j < candidate_count; j++)
     {
-        if (candidates[candidate_count].votes > candidates[candidate_count - 1].votes)
+        if (candidates[j].votes == winner)
         {
-            printf("%s\n", candidates[candidate_count].name);
-            return;
-        }
-        else if (candidates[candidate_count].votes == candidates[j].votes)
-        {
-            printf("%s\n", candidates[j].name);
+            printf("%s\n",candidates[j].name);
         }
     }
+    //printf("Winner: %s\n",candidates[index].name);
+    return;
 }
